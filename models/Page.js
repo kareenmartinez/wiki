@@ -1,6 +1,7 @@
-const Secualize = require('sequelize');
+const Sequelize = require('sequelize');
+const db = require('./index').db;
 
-class Page extends Secualize.Model {
+class Page extends Sequelize.Model {
   get route() {
     return '/wiki/' + this.urlTitle
   }
@@ -22,7 +23,7 @@ Page.init({
   status: {
     type: Sequelize.ENUM('open', 'closed')
   },
-}, { sequelize, modelName: 'page' });
+}, { sequelize: db, modelName: 'page' });
 
 
 module.exports = { Page };  

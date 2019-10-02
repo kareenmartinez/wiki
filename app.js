@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
 const models = require('./models');
 const routes = require('./routes');  //toma el index por convencion
+var user = require('./models/User');
+var page = require('./models/Page');
 
 
 var env = nunjucks.configure('views', { noCache: true });
@@ -16,7 +18,7 @@ app.engine('html', nunjucks.render);
 models.db.sync({ force: true })
   .then(function () {
     // asegurate de reemplazar el nombre de abajo con tu app de express
-    app.listen(3000, function () {
+    app.listen(3001, function () {
       console.log('Server is listening on port 3001!');
     });
   })

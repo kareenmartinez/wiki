@@ -1,6 +1,7 @@
-const Secualize = require('sequelize');
+const Sequelize = require('sequelize');
+const db = require('./index').db;
 
-class User extends Secualize.Model {
+class User extends Sequelize.Model {
 
 };
 
@@ -16,6 +17,6 @@ User.init({
       isEmail: true,
     }
   }
-}, { sequelize, modelName: 'user' });
+}, { sequelize: db, modelName: 'user' });
 
 module.exports = { User };
